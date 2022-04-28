@@ -1,6 +1,5 @@
-import re
+
 from django.shortcuts import render
-from django.http import HttpResponse
 from .models import Contact
 
 def index(request):
@@ -9,7 +8,6 @@ def index(request):
 def show(request):
     if(request.method == 'POST'):
         persons = Contact.objects.all()
-        print(persons)
         con = {'persons':persons}
         return render(request, 'contacts.html', con)
     else:
@@ -25,7 +23,7 @@ def insert(request):
         person.email =  request.POST['email']
         person.save()
 
-        return render(request, 'contacts.html', {'successful': 'Insert new contact successfully'})
+        return render(request, 'register.html', {'successful': 'Insert new contact successfully'})
 
     else:
-        return  render(request, 'contacts.html')
+        return  render(request, 'register.html')
