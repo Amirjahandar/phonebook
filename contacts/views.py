@@ -1,6 +1,6 @@
-
 from django.shortcuts import render
 from .models import Contact
+from .forms import ContactForm
 
 def index(request):
     return render(request, 'index.html')   
@@ -8,8 +8,8 @@ def index(request):
 def show(request):
     if(request.method == 'POST'):
         persons = Contact.objects.all()
-        con = {'persons':persons}
-        return render(request, 'contacts.html', con)
+        frm = ContactForm(instance=persons[1])
+        return render(request, 'contacts.html', {"forms": frm})
     else:
         return render(request, 'contacts.html')
 

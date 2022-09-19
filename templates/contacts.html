@@ -10,10 +10,11 @@
 
     <form action="{% url 'show' %}" method="POST">
         {% csrf_token %}
+        {{forms.as_p}}
         <input type="submit" value="show">
     </form>
 
-    {% if persons %}
+    <!-- {% if forms %}
     <table>
         <thead>
             <tr>
@@ -27,16 +28,15 @@
         <tbody>
             <tr>
                 <td>{{ p.firsname }}</td>
-                <td>{{p.lastname}}</td>
-                <td>{{p.tell}}</td>
-                <td>{{p.email}}</td>
+
             </tr>
         </tbody>
     </table>
     {% endfor %}
     {% endif%}
+     -->
     
-    
+
 
 </body>
 </html>
